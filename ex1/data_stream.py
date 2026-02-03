@@ -32,7 +32,7 @@ class SensorStream(DataStream):
         self.data = data_batch[0]
         result = ""
         param = ['temp:', 'humidity:', 'pressure:']
-        if data_batch[0] > 70 or data_batch[0] < -100:
+        if data_batch[0] > 50 or data_batch[0] < -10:
             self.warn.append(f"extreme temperature: {data_batch[0]}")
         if data_batch[1] < 20 or data_batch[1] > 80:
             self.warn.append(f"extreme humidity rate: {data_batch[1]}")
@@ -210,8 +210,8 @@ def ft_data_stream() -> None:
     print("=== Polymorphic Stream Processing ===")
 
     print("Processing mixed stream types through unified interface...\n")
-    s2_data = [48.9, -200]
-    t2_data = [60, 700, -870, 100000]
+    s2_data = [70, 10]
+    t2_data = [60, 700, -870, 12569]
     e2_data = ['login', 'ssh', 'error']
     try:
         s002 = StreamProcessor("SENSOR_002")

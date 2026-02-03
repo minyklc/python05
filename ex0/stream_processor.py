@@ -61,7 +61,7 @@ class TextProcessor(DataProcessor):
             return ret
 
     def validate(self, data: Any) -> bool:
-        print(f"Processing data: {data}")
+        print(f'Processing data: "{data}"')
         if isinstance(data, str) is True:
             return True
         return False
