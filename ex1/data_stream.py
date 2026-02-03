@@ -10,14 +10,14 @@ class DataStream(ABC):
 
     @abstractmethod
     def process_batch(self, data_batch: List[Any]) -> str:
-        pass
+        ...
 
     def filter_data(self, data_batch: List[Any],
                     criteria: Optional[str] = None) -> List[Any]:
-        return data_batch
+        ...
 
     def get_stats(self) -> Dict[str, Union[str, int, float]]:
-        return {'element': 1}
+        ...
 
 
 class SensorStream(DataStream):
@@ -233,12 +233,11 @@ def ft_data_stream() -> None:
         s2_warns = s002.filter_data(s2_data, 'hp')
         t2_warns = t002.filter_data(t2_data, 'hp')
         print("Filtered results: "
-              f"{s2_warns} critical sensor alerts, "
-              f"{t2_warns} large transaction")
+              f"{len(s2_warns)} critical sensor alerts, "
+              f"{len(t2_warns)} large transaction")
         print()
 
         print("All streams processed successfully. Nexus throughput optimal.")
-
     except Exception as e:
         print(e)
 

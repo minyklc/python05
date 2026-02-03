@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 from typing import Any
 from abc import ABC, abstractmethod
-import re
 
 
 class DataProcessor(ABC):
 
     @abstractmethod
     def process(self, data: Any) -> str:
-        pass
+        ...
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
-        pass
+        ...
 
     def format_output(self, result: str) -> str:
         return result
@@ -91,9 +90,7 @@ class LogProcessor(DataProcessor):
 
     def validate(self, data: Any) -> bool:
         print(f'Processing data: "{data}"')
-        pattern = r'(INFO|ERROR): (.*)'
-        match = re.match(pattern, data)
-        if match:
+        if data.split()[0] == "ERROR:" or data.split()[0] == "INFO:":
             return True
         return False
 
@@ -164,7 +161,7 @@ def ft_stream_processor() -> None:
     for t, d in ty:
         print(t.process(d))
     print()
-    
+
     print("Foundation systems online. Nexus ready for advanced streams.")
 
 
