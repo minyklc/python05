@@ -73,8 +73,8 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    def __init__(self):
-        pass
+    def __init__(self) -> None:
+        ...
 
     def process(self, data: Any) -> str:
         ret = "An unexpected error occured"

@@ -115,7 +115,7 @@ class OutputStage():
 
 
 class ProcessingPipeline(ABC):
-    def __init__(self):
+    def __init__(self) -> None:
         self.stages = []
 
     def add_stage(self, stage: ProcessingStage) -> None:
@@ -169,7 +169,7 @@ class StreamAdapter(ProcessingPipeline):
 
 
 class NexusManager():
-    def __init__(self):
+    def __init__(self) -> None:
         self.pipelines = []
 
     def add_pipeline(self, pipeline: ProcessingPipeline) -> None:

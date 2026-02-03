@@ -122,7 +122,7 @@ class EventStream(DataStream):
 
 
 class StreamProcessor:
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self.name = name
         if "SENSOR" in name:
             self.type = SensorStream(name)
