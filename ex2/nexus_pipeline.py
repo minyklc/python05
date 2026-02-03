@@ -247,11 +247,11 @@ def ft_nexus_pipeline() -> None:
     json3.add_stage(OutputStage())
     manager.add_pipeline(json3)
 
-    s = time.process_time()
+    s = time.perf_counter()
     chain_data = {"sensor": "temp", "value": 80.5, "unit": "F"}
     for _ in range(100000):
         manager.process_pipeline(chain_data, 'chaining')
-    e = time.process_time()
+    e = time.perf_counter()
     print("Chain result: 100000 records processed through 3-stage pipeline")
     print(f"Performance: 100% efficiency, {e - s:.2f}s total processing time")
     print()
