@@ -138,7 +138,9 @@ class StreamProcessor:
 
     def filter_data(self, data_batch: List[Any],
                     criteria: Optional[str] = None) -> List[Any]:
-        return self.type.filter_data(data_batch)
+        if criteria == 'hp':
+            data_batch = self.type.filter_data(data_batch, 'hp')
+        return data_batch
 
     def get_stats(self) -> Dict[str, Union[str, int, float]]:
         return self.type.get_stats()
@@ -208,8 +210,8 @@ def ft_data_stream() -> None:
     print("=== Polymorphic Stream Processing ===")
 
     print("Processing mixed stream types through unified interface...\n")
-    s2_data = [48.9, 70]
-    t2_data = [60, 700, -870, 30]
+    s2_data = [48.9, -200]
+    t2_data = [60, 700, -870, 100000]
     e2_data = ['login', 'ssh', 'error']
     try:
         s002 = StreamProcessor("SENSOR_002")
